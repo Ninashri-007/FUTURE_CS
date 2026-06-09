@@ -54,18 +54,6 @@ All findings were documented along with their potential impact and recommended m
 
 ## Folder Structure
 
-```text
-Task_1_Vulnerability_Assessment/
-│
-├── README.md
-├── Vulnerability_Assessment_Report.pdf
-└── Screenshots/
-    ├── nmap_scan.png
-    ├── zap_dashboard.png
-    ├── zap_homepage.png
-    ├── zap_alerts.png
-    └── headers.png
-```
 
 ---
 
