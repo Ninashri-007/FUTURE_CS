@@ -1,0 +1,12 @@
+From: support@microsoft.com
+To: employee@example.com
+Subject: Monthly Service Notification
+
+Hello,
+
+This is your monthly Microsoft service notification.
+
+You may access your account directly through the official Microsoft website.
+
+Thank you,
+Microsoft Support
