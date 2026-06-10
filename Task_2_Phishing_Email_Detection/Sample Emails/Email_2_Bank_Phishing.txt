@@ -1,0 +1,16 @@
+From: alerts@secure-bank-update.com
+To: customer@example.com
+Subject: Important Security Alert
+
+Dear Valued Customer,
+
+Our security system has identified unusual activity on your bank account.
+
+Please confirm your identity immediately:
+
+http://secure-bank-verification.net
+
+Failure to comply may result in temporary account suspension.
+
+Regards,
+Bank Security Department
