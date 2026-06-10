@@ -1,0 +1,15 @@
+From: microsoft-security@outlook-secure-login.com
+To: employee@example.com
+Subject: Password Expiration Notice
+
+Dear User,
+
+Your Microsoft account password will expire today.
+
+Please update your password immediately using the following link:
+
+http://microsoft-password-update.net
+
+Failure to update your password may result in loss of account access.
+
+Microsoft Support Team
