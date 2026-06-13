@@ -1,0 +1,315 @@
+# API Security Risk Analysis Report
+
+## Task 3 – API Security Risk Analysis
+
+**Prepared By:** NinaSree Adari
+**Date:** June 2026
+**Tools Used:** Browser, Developer Tools, Public Test API, Documentation Tools
+
+---
+
+# Executive Summary
+
+Application Programming Interfaces (APIs) have become a critical component of modern web and mobile applications. APIs facilitate communication between different software systems and often process sensitive information. However, improperly secured APIs can expose organizations to data breaches, unauthorized access, and service disruptions.
+
+This assessment evaluates a public demonstration API to identify common security risks related to authentication, authorization, data exposure, and API abuse. The goal is to understand potential vulnerabilities and recommend appropriate security controls based on industry best practices and OWASP API Security guidelines.
+
+---
+
+# Objectives
+
+The objectives of this assessment are:
+
+* Analyze publicly accessible API endpoints.
+* Identify potential security risks.
+* Evaluate authentication and authorization mechanisms.
+* Assess data exposure concerns.
+* Recommend remediation measures.
+* Document findings in a professional security report.
+
+---
+
+# Scope
+
+### Target API
+
+```text
+https://jsonplaceholder.typicode.com
+```
+
+### Endpoints Evaluated
+
+```text
+GET /users
+GET /posts
+GET /comments
+```
+
+### Assessment Type
+
+Passive API Security Review
+
+No intrusive testing, exploitation attempts, or denial-of-service activities were performed.
+
+---
+
+# Methodology
+
+The following methodology was used during the assessment:
+
+## 1. Endpoint Discovery
+
+Publicly available API endpoints were identified and reviewed.
+
+## 2. Request Analysis
+
+HTTP GET requests were sent to available endpoints to inspect returned data.
+
+## 3. Authentication Review
+
+The API was evaluated to determine whether authentication mechanisms were required before data access.
+
+## 4. Authorization Review
+
+Potential authorization weaknesses were assessed based on endpoint accessibility and resource exposure.
+
+## 5. Risk Assessment
+
+Identified issues were categorized according to their likelihood and potential impact on confidentiality, integrity, and availability.
+
+---
+
+# Assessment Findings
+
+---
+
+## Finding 1: Excessive Data Exposure
+
+### Severity
+
+Medium
+
+### Description
+
+The API returns extensive user information including names, email addresses, phone numbers, company information, and geographic details.
+
+Example fields observed:
+
+```json
+{
+  "id": 1,
+  "name": "Leanne Graham",
+  "username": "Bret",
+  "email": "Sincere@april.biz",
+  "phone": "1-770-736-8031"
+}
+```
+
+### Potential Impact
+
+* Information disclosure
+* Privacy concerns
+* Increased attack surface
+* User profiling by attackers
+
+### Recommendation
+
+* Implement data minimization.
+* Return only required fields.
+* Apply field-level access controls.
+
+---
+
+## Finding 2: Missing Authentication Controls
+
+### Severity
+
+High
+
+### Description
+
+The API endpoints were accessible without requiring authentication credentials.
+
+### Potential Impact
+
+* Unauthorized data access
+* Exposure of sensitive information
+* Increased risk of automated data collection
+
+### Recommendation
+
+* Implement OAuth 2.0.
+* Use JWT-based authentication.
+* Require API keys where appropriate.
+
+---
+
+## Finding 3: Potential User Enumeration
+
+### Severity
+
+Medium
+
+### Description
+
+User records utilize predictable sequential identifiers.
+
+Examples:
+
+```text
+User ID: 1
+User ID: 2
+User ID: 3
+```
+
+Attackers may attempt to enumerate records and gather information at scale.
+
+### Potential Impact
+
+* Unauthorized information gathering
+* User profiling
+* Increased exposure of business data
+
+### Recommendation
+
+* Enforce authorization checks.
+* Use indirect object references where possible.
+* Monitor unusual access patterns.
+
+---
+
+## Finding 4: Lack of Rate Limiting
+
+### Severity
+
+Medium
+
+### Description
+
+No visible rate limiting controls were observed during testing.
+
+### Potential Impact
+
+* API abuse
+* Resource exhaustion
+* Denial-of-service attempts
+* Automated scraping
+
+### Recommendation
+
+* Implement request throttling.
+* Apply rate limiting policies.
+* Monitor excessive request activity.
+
+---
+
+## Finding 5: Insufficient Input Validation (Potential Risk)
+
+### Severity
+
+Medium
+
+### Description
+
+Input validation weaknesses are a common API security concern that can lead to injection attacks if not properly addressed.
+
+### Potential Impact
+
+* SQL Injection
+* Command Injection
+* Data manipulation
+* Application compromise
+
+### Recommendation
+
+* Validate all user inputs.
+* Implement server-side filtering.
+* Use parameterized queries.
+
+---
+
+# Risk Assessment Matrix
+
+| Risk                    | Severity | Business Impact        |
+| ----------------------- | -------- | ---------------------- |
+| Excessive Data Exposure | Medium   | Information Disclosure |
+| Missing Authentication  | High     | Unauthorized Access    |
+| User Enumeration        | Medium   | Data Harvesting        |
+| Lack of Rate Limiting   | Medium   | Service Abuse          |
+| Input Validation Issues | Medium   | Injection Risks        |
+
+---
+
+# Business Impact Analysis
+
+If the identified risks are not addressed, organizations may face:
+
+### Confidentiality Risks
+
+* Exposure of sensitive user information.
+* Unauthorized access to protected resources.
+
+### Integrity Risks
+
+* Unauthorized modification of data.
+* Loss of trust in application data.
+
+### Availability Risks
+
+* Service disruption due to abuse.
+* Increased operational costs.
+
+### Compliance Risks
+
+* Regulatory violations.
+* Data protection concerns.
+
+---
+
+# Recommendations
+
+## Authentication
+
+* Implement OAuth 2.0.
+* Use JWT authentication tokens.
+* Enable Multi-Factor Authentication where applicable.
+
+## Authorization
+
+* Apply Role-Based Access Control (RBAC).
+* Verify user permissions for every request.
+
+## Data Protection
+
+* Minimize exposed data.
+* Encrypt sensitive information.
+* Enforce HTTPS for all API traffic.
+
+## Monitoring and Logging
+
+* Log API requests.
+* Detect abnormal behavior.
+* Configure security alerts.
+
+## Availability Controls
+
+* Implement rate limiting.
+* Apply request throttling.
+* Protect against abuse and denial-of-service attacks.
+
+## Secure Development Practices
+
+* Validate and sanitize all inputs.
+* Conduct regular security reviews.
+* Follow OWASP API Security guidelines.
+
+---
+
+# Conclusion
+
+The assessment identified several common API security concerns, including excessive data exposure, lack of authentication, potential user enumeration, and missing rate limiting controls. While the evaluated API serves as a public demonstration environment, these findings reflect risks commonly observed in real-world applications.
+
+Organizations should implement strong authentication, authorization, monitoring, and data protection mechanisms to reduce API-related security risks and maintain the confidentiality, integrity, and availability of their services.
+
+---
+
